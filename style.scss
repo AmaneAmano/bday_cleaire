@@ -1,0 +1,449 @@
+html, body {
+	margin: 0; padding: 0; overflow: hidden;
+}
+/* variables */
+$light-pink: #FAB3C3;
+$pink: #D483AE;
+$purple: #C8427B;
+$blue: #7FC0ED;
+$light-blue: #A3CFF2;
+$green: #92D490;
+$blue-green: #44CCBD;
+$brown: #917050;
+$light-brown: #E2AB6D;
+$orange: #E8BD4C;
+$light-yellow: #FCE694;
+$yellow: #FFF153;
+$gray: #979797;
+$white: #FFFFF3;
+$black: #363235;
+
+/* load-view background */
+.load-view_bg {
+	position: absolute;
+	width: 100%; height: 100%;
+	background-size: 300px;
+	background-image: url("images/load-view/load-view_bg.svg");
+}
+.load-view_inner {
+  position: absolute;
+  top: 0; left: calc(50% - 70% / 2);
+	width: 70%; height: 100%;
+	background-color: $white;
+	box-shadow: 0 0 10px 3px $gray;
+}
+
+.load-view_title {
+  position: absolute;
+  top: calc(50% - 15%); left: calc(50% - 30% / 2);
+	width: 30%; height: 20%;
+	background-repeat: no-repeat;
+	background-image: url("images/load-view/load-view_title.svg");
+}
+
+.load-view_triangles {
+  position: absolute;
+  top: 55%; left: calc(50% - 80% / 2);
+  width: 80%; height: 100%;
+  
+}
+/* triangles */
+.load-view_triangles div {
+  position: absolute;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 0 25px 43.3px 25px;
+  opacity: 0;
+  transform: rotate(180deg);
+  border-color: transparent transparent $light-pink transparent;
+}
+
+/* triangles change  colors  */
+@for $i from 1 to 10 {
+  .load-view_triangles div:nth-child(#{$i + 1}) {
+    animation-delay: $i * 0.4s;
+    @if $i % 2  == 0 {border-color: transparent transparent $light-pink transparent;}
+  	@else {border-color: transparent transparent $light-blue transparent;}   
+  }
+}
+/* load-view_end */
+.load-view_end {
+  position: absolute;
+  width: 100%; height: 100%;
+  overflow: hidden;
+}
+.load-view_end div {
+  position: absolute;
+  width: 50%; height: 50%;
+  background-color: $light-blue;
+}
+.load-view_end div:nth-child(1) {
+  top: 0; left: 0;
+  transform: translateX(-100%);
+}
+.load-view_end div:nth-child(2){
+  top: 0; right: 0;
+  transform: translateY(-100%);
+}
+.load-view_end div:nth-child(3) {
+  bottom: 0; left: 0;
+  transform: translateY(100%); 
+}
+.load-view_end div:nth-child(4) {
+  bottom: 0; right: 0;
+  transform: translateX(100%);
+}
+
+/* load-view animation */
+/* triangles animation rolling to right  */
+@keyframes rolling-to-right {
+  0% { left: 0; opacity: 0; }
+  50% { left: 50%; opacity: 1; }
+  100% { left: 100%; transform: rotate(-180deg); opacity: 0;}
+}
+
+.load-view_triangles div{ animation: rolling-to-right 4s linear 1; }
+
+/* load-view_end animation */
+@keyframes slide-right { to {transform: translateX(0%);} }
+@keyframes slide-left { to {transform: translateX(0%);} }
+@keyframes slide-bottom { to {transform: translateY(0%);} }
+@keyframes slide-top { to {transform: translateY(0%);} }
+
+@keyframes slide-right-back { from {transform: translateX(0%);} to {transform: translateX(-100%);}}
+@keyframes slide-left-back { from {transform: translateX(0%);} to {transform: translateX(100%);}}
+@keyframes slide-bottom-back { from {transform: translateY(0%);} to {transform: translateY(-100%);}}
+@keyframes slide-top-back { from {transform: translateY(0%);} to {transform: translateY(100%);}}
+
+
+$lv_end_time: 0.8s;
+$lv_end_dur1: 8s;
+$lv_end_dur2: 10s;
+.load-view_end div:nth-child(1) { animation: slide-right $lv_end_time ease $lv_end_dur1 1 forwards, slide-right-back $lv_end_time ease $lv_end_dur2 1 forwards; }
+.load-view_end div:nth-child(2) { animation: slide-bottom $lv_end_time ease $lv_end_dur1 1 forwards, slide-bottom-back $lv_end_time ease $lv_end_dur2 1 forwards;}
+.load-view_end div:nth-child(3) { animation: slide-top $lv_end_time ease $lv_end_dur1 1 forwards, slide-top-back $lv_end_time ease $lv_end_dur2 1 forwards; }
+.load-view_end div:nth-child(4) { animation: slide-left $lv_end_time ease $lv_end_dur1 1 forwards, slide-left-back $lv_end_time ease $lv_end_dur2 1 forwards; }
+
+
+/* motion1 */
+.motion1 {
+  position: absolute;
+  width: 100%; height: 100%;
+  overflow: hidden;
+}
+.motion1_bg1 {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	background-size: 150px;
+	background-image: url("images/motion1/motion1_bg1.svg");
+	opacity: 0;
+}
+.motion1_title {
+	position: absolute;
+	width: 100%; height: 100%;
+  img {
+    position: absolute;
+    top: calc(50% - 50% / 2); left: calc(50% - 50% / 2);
+    width: 50%; height: 50%;
+    opacity: 0;
+  }
+}
+
+.motion1_transition {
+  position: absolute;
+  width: 100%; height: 100%;
+
+  div {
+    position: absolute;
+    width: 100%; height: 100%;
+    transform: translateX(100%);
+  }
+}
+
+.motion1_bg2 {
+  position: absolute;
+  width: 100%; height: 100%;
+  background-color: #fffff3;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='72' viewBox='0 0 36 72'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23b8b2c1' fill-opacity='0.4'%3E%3Cpath d='M2 6h12L8 18 2 6zm18 36h12l-6 12-6-12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0;
+}
+
+.motion1_slant {
+  position: absolute;
+  width: 100%; height: 100%;
+  overflow: hidden;
+}
+.motion1_slant div {
+  position: absolute;
+  width: 200%;
+  box-shadow: 0 0 2px 5px rgba(66, 66, 66, 0.048) inset;
+  opacity: 0;
+  background-color: $light-yellow;
+}
+.motion1_slant div:nth-child(1) {
+  top: -25%; left: 0;
+  height: 50%;
+  transform-origin: bottom left;
+}
+.motion1_slant div:nth-child(2) {
+  top: 75%; right: 0;
+  height: 100%;
+  transform-origin: top right;
+}
+
+.motion1_words {
+  position: absolute;
+  top: calc(50% - 100px / 2); left: calc(50% - 660px / 2);
+  width: 660px; height: 100px;
+  }
+.motion1_words div {
+position: relative;
+float: left;
+margin-right: 10px;
+width: 100px; height: 100px;
+opacity: 0;
+background-size: 100px;
+}
+
+.motion1_end {
+  position: absolute;
+  width: 100%; height: 100%;
+  overflow: hidden;
+}
+.motion1_end div {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 10%;
+  transform: translateX(-100%);
+  background-color: #f8f3ff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23182d6d' fill-opacity='0.4'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* motion2 */
+.motion2 {
+  position: absolute;
+  width: 100%; height: 100%;
+  overflow: hidden;
+}
+.motion2_words {
+  position: absolute;
+  width: 100%; height: 100%;
+  overflow: hidden;
+}
+.motion2_words div:nth-child(1) {
+  position: absolute;
+  top: 0; right: 10%;
+  width: 100px; height: 100%;
+  background-color: $purple;
+  transform: translateY(-100%);
+}
+.motion2_words div:nth-child(2) {
+  position: absolute;
+  margin: auto;
+  top: 10%; left: 0;
+  width: 80%; height: 100px;
+  background-size: 100%; background-repeat: no-repeat;
+  background-color: $blue-green;
+  background-image: url("images/motion2/motion2_word1.svg");
+  background-position: center;
+  transform: translateX(-100%);
+  
+}
+.motion2_words div:nth-child(3) {
+  position: absolute;
+  bottom: 20%; right: 0;
+  width: 60%; height: 80px;
+  background-size: 100%; background-repeat: no-repeat;
+  background-color: $blue-green;
+  background-image: url("images/motion2/motion2_word2.svg");
+  background-position: center;
+  transform: translateX(100%);
+}
+
+.motion2_eyes {
+  position: absolute;
+  width: 100%; height: 100%;   
+}
+.motion2_eyes div{
+  position: absolute;
+  width: 100%; height: 50%;
+  background-color: $black;
+}
+.motion2_eyes div:nth-child(1) {
+  top: 0; left: 0;
+  transform: translateY(-100%);
+}
+.motion2_eyes div:nth-child(2) {
+  bottom: 0; left: 0;
+  transform: translateY(100%);
+}
+
+.motion2_end {
+  position: absolute;
+  width: 100%; height: 100%;
+}
+
+.motion2_end div {
+  position: absolute;
+  width: 50px; height: 50px;
+  top: -100%; left: calc(50% - 50px / 2);
+  border-radius: 50%;
+  background-color: $pink;
+}
+/* top-page */
+.top-page {
+  position: absolute;
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+  overflow: hidden;
+}
+
+.top-page_bg1 {
+  position: absolute;
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+  background-size: 600px;
+  background-image: url("images/top-page/dot.svg");
+  opacity: 0;
+}
+.top-page_frame-top {
+  position: absolute;
+  top: -200%; left: 0;
+  width: 200%; height: 200%;
+  transform-origin: bottom left;
+  transform: rotate(0eg);
+  background-color: $purple;
+  opacity: 0;
+}
+.top-page_line div{
+  position: absolute;
+  background-color: #fff;
+}
+.top-page_line div:nth-child(1) {width: 100%; height: 20px; top: 10%; left: 0; transform: translateX(-100%);}
+.top-page_line div:nth-child(2) {width: 20px; height: 100%; top: 0; right: 10%; transform: translateY(-100%);}
+
+.top-page_frame-bottom {
+  position: absolute;
+  top: 85%; left: 0;
+  width: 200%;height: 100%;
+  transform-origin: top left;
+  transform: rotate(0deg);
+  background-color: $pink;
+  opacity: 0;
+}
+.top-page_cleaire {
+  position: absolute;
+  top: 0; left: -10%;
+  width: 100%; height: 100%;
+  img {
+      position: absolute;
+      bottom: 0; left: 10%;
+      width: auto; height: 900px;
+      opacity: 0;
+  }
+}
+.top-page_logo {
+  position: absolute;
+  top: 0; right: 0;
+  width: 100%; height: 100%;
+  img {
+      position: absolute;
+      bottom: 20%; right: 10%;
+      width: 700px; height: auto;
+      transform-origin: bottom right;
+      opacity: 0;
+  }
+}
+
+
+/* motion1 animation */
+@keyframes fade_in {from {opacity: 0;} to {opacity: 1;}}
+@keyframes title_in {from {opacity: 0; transform: translateY(-5%);} 
+                     to {opacity: 1; transform: translateY(0%) rotate(-3deg);}}
+
+.motion1_bg1 { animation: fade_in 1s ease $lv_end_dur2 1 forwards;}
+.motion1_title img { animation: title_in 1s ease $lv_end_dur2+0.5 1 forwards;}  /*time: 11.5s */
+
+$motion1_dur1: 11.5s;
+
+.motion1_transition div:nth-child(1) {background-color: $blue; animation: slide-left 1s ease $motion1_dur1+1 1 forwards}
+.motion1_transition div:nth-child(2) {background-color: $green; animation: slide-left 1s ease $motion1_dur1+1.2 1 forwards}
+.motion1_transition div:nth-child(3) {background-color: $yellow; animation: slide-left 1s ease $motion1_dur1+1.4 1 forwards}
+.motion1_transition div:nth-child(4) {background-color: $pink; animation: slide-left 1s ease $motion1_dur1+1.6 1 forwards}
+.motion1_transition div:nth-child(5) {background-color: $orange; animation: slide-left 1s ease $motion1_dur1+1.8 1 forwards}
+.motion1_transition div:nth-child(6) {background-color: $white; animation: slide-left 1s ease $motion1_dur1+2 1 forwards} /* time 14.5s */
+
+.motion1_bg2 {animation: fade_in 0.5s ease 14.8s 1 forwards;} /* time 15.3s*/
+
+@keyframes slant {
+  0% {transform: rotate(-90deg);opacity: 0;}
+  50% {transform: rotate(-5deg); opacity: 1;}
+  100% {transform: rotate(-10deg); opacity: 1;}
+}
+
+.motion1_slant div {animation: slant 1s ease-in-out 15.5s 1 forwards;} /* time 16.5s */
+
+@keyframes fade-in_1 { to {opacity: 1; transform: rotate(5deg);} }
+@keyframes fade-in_2 { to {opacity: 1; transform: rotate(-5deg);} }
+
+$motion1_words_time: 2s;
+  
+.motion1_words div:nth-child(1){ animation: fade-in_1 $motion1_words_time ease 16.9s 1 forwards;
+      background-color: $light-blue; background-image: url("images/motion1/motion1_words_hashtag.svg");}
+.motion1_words div:nth-child(2){ animation: fade-in_2 $motion1_words_time ease 17.2s 1 forwards;
+      background-color: $light-pink; background-image: url("images/motion1/motion1_words_ku.svg");}
+.motion1_words div:nth-child(3){ animation: fade-in_1 $motion1_words_time ease 17.15s 1 forwards;
+      background-color: $light-brown; background-image: url("images/motion1/motion1_words_re.svg");}
+.motion1_words div:nth-child(4){ animation: fade-in_2 $motion1_words_time ease 16.95s 1 forwards;
+      background-color: $light-blue; background-image: url("images/motion1/motion1_words_a.svg");}
+.motion1_words div:nth-child(5){ animation: fade-in_1 $motion1_words_time ease 17.4s 1 forwards;
+      background-color: $light-pink; background-image: url("images/motion1/motion1_words_ta.svg");}
+.motion1_words div:nth-child(6){ animation: fade-in_2 $motion1_words_time ease 17.35s 1 forwards;
+      background-color: $light-brown; background-image: url("images/motion1/motion1_words_n.svg");}  /* time 19.4s*/
+
+
+@keyframes scale-height { to {height:100%;} }
+.motion1_end div {animation: slide-right 0.3s ease 20.2s 1 forwards,
+                            scale-height 0.3s ease-in-out 20.5s 1 forwards;} /* time 20.8s*/
+
+/* motion2 animation*/
+.motion2_words div:nth-child(1) {animation: slide-bottom 0.2s ease 21s 1 forwards;} /* time 21.2s*/
+
+@keyframes slide-right_words { 0% {transform: translateX(-100%);}
+                                10% {transform: translateX(0%);}
+                                50% {transform: translateX(20%);}
+                                100% {transform: translateX(500%);}}
+@keyframes slide-left_words { 0% {transform: translateX(100%);}
+                                10% {transform: translateX(0%);}
+                                50% {transform: translateX(20%);}
+                                100% {transform: translateX(-500%);}}
+.motion2_words div:nth-child(2) {animation: slide-right_words 4s ease 21.0s 1 forwards;}
+.motion2_words div:nth-child(3) {animation: slide-left_words 3s ease 21.0s 1 forwards;} /* time  25s */
+
+@keyframes slide-bottom {to {transform: translateY(0%);}}
+@keyframes slide-top {to {transform: translateY(0%);}}
+
+.motion2_eyes div:nth-child(1) {animation: slide-bottom 0.8s ease-in-out 25.2s 3 forwards alternate;}
+.motion2_eyes div:nth-child(2) {animation: slide-top 0.8s ease-in-out 25.2s 3 forwards alternate;} /* time 27.6s*/
+
+@keyframes m2e_down {
+    20% {top:50%;}
+    100% {top:50%; transform: scale(50); background-color: white;}
+  }
+
+.motion2_end div {animation: m2e_down 1s ease-in 27.4s 1 forwards;} /* time28.4s*/
+
+/* top-page animation*/
+@keyframes fade_in_bg {to {opacity: 0.3;}}
+@keyframes fadein_frame_top {to {opacity: 1; transform: rotate(35deg);}}
+@keyframes fadein_frame_bottom {to {opacity: 1; transform: rotate(5deg); }}
+@keyframes fadein_logo {to {opacity: 1; transform: rotate(-10deg);}}
+
+.top-page_bg1 {animation: fade_in_bg 0.3s ease 28.5s 1 forwards;}
+.top-page_frame-top {animation: fadein_frame_top 0.8s ease-in 28.5s 1 forwards;}
+.top-page_frame-bottom {animation: fadein_frame_bottom 0.8s ease-in 28.5s 1 forwards;}
+.top-page_cleaire img {animation: fade_in 1.3s ease 28.5s 1 forwards;}
+.top-page_logo img {animation: fadein_logo 1.2s ease 28.5s 1 forwards;}
+.top-page_line div:nth-child(1) {animation: slide-right 1.2s ease-in 28.5s 1 forwards;}
+.top-page_line div:nth-child(2) {animation: slide-bottom 1.2s ease-in 28.5s 1 forwards;}
