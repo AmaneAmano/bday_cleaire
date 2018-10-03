@@ -427,15 +427,15 @@ $motion1_words_time: 2s;
 @keyframes slide-bottom {to {transform: translateY(0%);}}
 @keyframes slide-top {to {transform: translateY(0%);}}
 
-.motion2_eyes div:nth-child(1) {animation: slide-bottom 0.8s ease-in-out 25.2s 3 forwards alternate;}
-.motion2_eyes div:nth-child(2) {animation: slide-top 0.8s ease-in-out 25.2s 3 forwards alternate;} /* time 27.6s*/
+.motion2_eyes div:nth-child(1) {animation: slide-bottom 0.8s ease-in-out 23.2s 3 forwards alternate;}
+.motion2_eyes div:nth-child(2) {animation: slide-top 0.8s ease-in-out 23.2s 3 forwards alternate;} /* time 25.6s*/
 
 @keyframes m2e_down {
     20% {top:50%;}
     100% {top:50%; transform: scale(50); background-color: white;}
   }
 
-.motion2_end div {animation: m2e_down 1s ease-in 27.4s 1 forwards;} /* time28.4s*/
+.motion2_end div {animation: m2e_down 1s ease-in 25.0s 1 forwards;} /* time 26s*/
 
 /* top-page animation*/
 @keyframes fade_in_bg {to {opacity: 0.3;}}
@@ -443,10 +443,10 @@ $motion1_words_time: 2s;
 @keyframes fadein_frame_bottom {to {opacity: 1; transform: rotate(5deg); }}
 @keyframes fadein_logo {to {opacity: 1; transform: rotate(-10deg);}}
 
-.top-page_bg1 {animation: fade_in_bg 0.3s ease 28.5s 1 forwards;}
-.top-page_frame-top {animation: fadein_frame_top 0.8s ease-in 28.5s 1 forwards;}
-.top-page_frame-bottom {animation: fadein_frame_bottom 0.8s ease-in 28.5s 1 forwards;}
-.top-page_cleaire img {animation: fade_in 1.3s ease 28.5s 1 forwards;}
-.top-page_logo img {animation: fadein_logo 1.2s ease 28.5s 1 forwards;}
-.top-page_line div:nth-child(1) {animation: slide-right 1.2s ease-in 28.5s 1 forwards;}
-.top-page_line div:nth-child(2) {animation: slide-bottom 1.2s ease-in 28.5s 1 forwards;}
+.top-page_bg1 {animation: fade_in_bg 0.3s ease 26.2s 1 forwards;}
+.top-page_frame-top {animation: fadein_frame_top 0.8s ease-in 26.2s 1 forwards;}
+.top-page_frame-bottom {animation: fadein_frame_bottom 0.8s ease-in 26.2s 1 forwards;}
+.top-page_cleaire img {animation: fade_in 1.3s ease 26.2s 1 forwards;}
+.top-page_logo img {animation: fadein_logo 1.2s ease 26.2s 1 forwards;}
+.top-page_line div:nth-child(1) {animation: slide-right 1.2s ease-in 26.2s 1 forwards;}
+.top-page_line div:nth-child(2) {animation: slide-bottom 1.2s ease-in 26.2s 1 forwards;}
